@@ -7,7 +7,7 @@ struct Comment {
   char* content;
   int replyCount;
   Reply* repliesHead;
-  Reply* repliesEnd;
+  // Reply* repliesEnd;
   struct Comment* next;
 };
 typedef struct Comment Comment;
