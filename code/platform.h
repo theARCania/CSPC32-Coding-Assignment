@@ -3,6 +3,7 @@
 struct Platform {
   Post* postList;
   Post* lastViewedPost;
+  int countPost;
 };
 typedef struct Platform Platform;
 
