@@ -8,4 +8,6 @@ struct Post {
   Comment* comments;
 };
 typedef struct Post Post;
+
+Post* createPost(char* username, char* caption);
 #endif

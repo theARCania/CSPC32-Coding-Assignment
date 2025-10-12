@@ -18,10 +18,8 @@ void createPlatform() {
 
 
 bool addPost(char* username, char* caption) {
-  bool posted = 0;
-
-  
-
+  bool posted = false;
+  Post* newPost = createPost(username, caption);
   return posted;
 }
 

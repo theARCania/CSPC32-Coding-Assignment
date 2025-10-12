@@ -12,4 +12,5 @@ struct Comment {
 };
 typedef struct Comment Comment;
 
+Comment* createComment(char* username, char* content);
 #endif

@@ -8,4 +8,5 @@ struct Reply {
 };
 typedef struct Reply Reply;
 
+Reply* createReply(char* username, char* content); 
 #endif
