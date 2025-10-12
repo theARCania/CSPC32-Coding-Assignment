@@ -8,13 +8,13 @@ Post* createPost(char* username, char* caption) {
   // username cannot contain spaces
   if (strrchr(username, ' ') != NULL) {
     perror("Post not created. Username must not contain spaces.");
-    return NULL;
+    exit(1);
   }
 
   Post* newPost = (Post*) malloc(sizeof(Post));
   if (!newPost) {
     perror("Post not created. Memory allocation failed.");
-    return NULL;
+    exit(0);
   }
 
   newPost->caption = caption;
