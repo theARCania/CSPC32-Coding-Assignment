@@ -3,10 +3,45 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#define MAX_SIZE_STACK 1000
 
 Platform* platform;
 
-void createPlatform() {
+struct PostStack {
+  int top;
+  Post* stack[MAX_SIZE_STACK];
+};
+typedef struct PostStack PostStack;
+
+PostStack* poststack;
+
+PostStack* createStack() {
+  if (poststack != NULL) return poststack;
+
+  poststack = (PostStack*) malloc(sizeof(PostStack));
+  if (poststack == NULL) {
+    perror("Memory allocation failed during stack creation.");
+    exit(0);
+  }
+  poststack->top = -1;
+  return poststack;
+}
+
+bool pushPost(Post* post) {
+  if (poststack->top == MAX_SIZE_STACK-1) {
+    printf("Post-stack full. Cannot post.");
+    return false;
+  }
+  poststack->stack[++poststack->top] = post;
+  return true;
+}
+
+
+Platform* createPlatform() {
+  if (platform != NULL) return platform;
+  // return variable directly
+  // to avoid multiple instantiation
+
   platform = (Platform*) malloc(sizeof(Platform));
   if (platform == NULL) {
     perror("Memory allocation failed during platform creation.");
@@ -14,16 +49,23 @@ void createPlatform() {
   }
   platform->lastViewedPost = NULL;
   platform->postList = NULL;
+  return platform;
 }
 
 
 bool addPost(char* username, char* caption) {
   bool posted = false;
   Post* newPost = createPost(username, caption);
-  return posted;
+  if (newPost == NULL) posted = false;
+  else posted = true;
+
+  if (!posted) return posted;
+  else {
+    if (pushPost(newPost) == false) posted = false;
+    else posted = true;
+    return posted;
+  }
 }
-
-
 
 
 
