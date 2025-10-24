@@ -67,5 +67,27 @@ bool addPost(char* username, char* caption) {
   }
 }
 
+bool stackDeletionAdjust(int n) {
+  int top = poststack->top;
+  for (int i = top - n; i < top; i++) {
+    poststack->stack[i] = poststack->stack[i+1];
+  }
+  poststack->stack[top] = NULL;
+  return true; // keeping a bool return value was needed
+  // to maintain code modularity and regularity.
+}
+
+
+bool deletePost(int n) {
+  // 0th indexing on n is assumed here.
+  if (stackDeletionAdjust(n)) return true;
+  else return false;
+}
+
+Post* viewPost(int n) {
+  if (poststack->stack[poststack->top]) {
+
+  }
+}
 
 
