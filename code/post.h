@@ -6,6 +6,9 @@ struct Post {
   char* username;
   char* caption;
   Comment* comments;
+  struct Post* next;
+  struct Post* prev;
+  int index;
 };
 typedef struct Post Post;
 

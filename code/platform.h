@@ -1,11 +1,14 @@
+#ifndef PLATFORM_H
+#define PLATFORM_H
+
 #include "comment.h"
 #include "post.h"
 #include <stdbool.h>
 
 struct Platform {
-  Post* postList;
+  Post* PostList; // exception in camelcase here.
   Post* lastViewedPost;
-  int countPost;
+  // int countPost; unnecessary implementation.
 };
 typedef struct Platform Platform;
 
@@ -25,3 +28,5 @@ bool deleteReply(int n, int m);
 
 
 extern Platform* platform;
+
+#endif
